@@ -24,6 +24,8 @@ Writing a contract for making a degen token which helps us to perform basic func
 Remix IDE can be used to run this code.Follow this link :- https://remix.ethereum.org/.
 Create a new file with the name 'DegenToken' and save the file with a .sol extension (e.g., DegenToken.sol). Paste the code given below in the file.
 Code: 
+'''
+'''
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
@@ -65,6 +67,9 @@ contract DegenToken is ERC20, ERC20Burnable, Ownable {
         return itemFrequency[productId];
     }
 }
+
+'''
+'''
 
 
 # Running the program:
