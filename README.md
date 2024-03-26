@@ -24,17 +24,16 @@ Writing a contract for making a degen token which helps us to perform basic func
 Remix IDE can be used to run this code.Follow this link :- https://remix.ethereum.org/.
 Create a new file with the name 'DegenToken' and save the file with a .sol extension (e.g., DegenToken.sol). Paste the code given below in the file.
 Code: 
-'''
-'''
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-contract DegenToken is ERC20, ERC20Burnable, Ownable {
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.8.9;
     
+    import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+    import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+    import "@openzeppelin/contracts/access/Ownable.sol";
+    
+    contract DegenToken is ERC20, ERC20Burnable, Ownable {
+        
     string public itemstr;
     mapping(uint256 => uint256) public itemFrequency;
 
@@ -68,8 +67,6 @@ contract DegenToken is ERC20, ERC20Burnable, Ownable {
     }
 }
 
-'''
-'''
 
 
 # Running the program:
@@ -81,11 +78,11 @@ contract DegenToken is ERC20, ERC20Burnable, Ownable {
 
 In order to deploy this contract onto the avalanche fuji testnet, try running this command:
 
-# npx hardhat run/scripts/deploy.js --network fuji
+    # npx hardhat run/scripts/deploy.js --network fuji
 
 In order to verify the contract address , try running this command:
 
-# npx hardhat verify {address} --network fuji
+    # npx hardhat verify {address} --network fuji
 
 ## Authors
 
