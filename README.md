@@ -20,25 +20,66 @@ Writing a contract for making a degen token which helps us to perform basic func
 
 ## Getting Started
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
 ### Executing program
+Remix IDE can be used to run this code.Follow this link :- https://remix.ethereum.org/.
+Create a new file with the name 'DegenToken' and save the file with a .sol extension (e.g., DegenToken.sol). Paste the code given below in the file.
+Code: 
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-## Help
+contract DegenToken is ERC20, ERC20Burnable, Ownable {
+    
+    string public itemstr;
+    mapping(uint256 => uint256) public itemFrequency;
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+    constructor() ERC20("Degen", "DGN") Ownable(msg.sender) {
+        itemstr="Items in my store are : 1.helmet  2.gloves  3.safety gear ";
+
+        itemFrequency[1] = 5; 
+        itemFrequency[2] = 5; 
+        itemFrequency[3] = 5; 
+    }
+
+    function mint(address to_address, uint256 amt) public onlyOwner {
+        _mint(to_address, amt);
+    }
+
+    function redeem(uint256 productId) public {
+        require(balanceOf(msg.sender) >= 1500, "the least number of tokens can be 1500");
+        assert(productId > 0 && productId <= 3); 
+
+        uint256 tokensToBurn = 1500;
+        _burn(msg.sender, tokensToBurn*productId);
+
+        itemFrequency[productId]--;
+
+   
+    }
+
+    function getItemFrequency(uint256 productId) public view returns (uint256) {
+         assert(productId > 0 && productId <= 3); 
+        return itemFrequency[productId];
+    }
+}
+
+
+# Running the program:
+- Compile the code using the solidity compiler 'DegenToken.sol' in Remix IDE.
+- Deploy the contract at the owner address using the 'deploy' function of Remix IDE
+- execute the functions like mint,burn,redeem,transfer,etc
+
+  NOTE: The above program can only be run in remix when compiler is set to "0.8.9" 
+
+In order to deploy this contract onto the avalanche fuji testnet, try running this command:
+
+-- npx hardhat run/scripts/deploy.js --network fuji
+In order to verify the contract address , try running this command:
+
+npx hardhat verify {address} --network fuji
 
 ## Authors
 
