@@ -76,17 +76,16 @@ contract DegenToken is ERC20, ERC20Burnable, Ownable {
 
 In order to deploy this contract onto the avalanche fuji testnet, try running this command:
 
--- npx hardhat run/scripts/deploy.js --network fuji
+# npx hardhat run/scripts/deploy.js --network fuji
+
 In order to verify the contract address , try running this command:
 
-npx hardhat verify {address} --network fuji
+# npx hardhat verify {address} --network fuji
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+U Sriram
+usriram186@gmail.com
 
 
 ## License
