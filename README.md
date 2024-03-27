@@ -65,7 +65,7 @@ Code:
          assert(productId > 0 && productId <= 3); 
         return itemFrequency[productId];
     }
-}
+    }
 
 //ALL REQUIREMENTS SATISFIED, CHECK LOOM VIDEO FOR DEPLOYMENT AND VERIFICATION
 
